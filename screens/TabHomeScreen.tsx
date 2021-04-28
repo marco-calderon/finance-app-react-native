@@ -1,12 +1,83 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import CategoryChart from '../components/CategoryChart';
+import AccountSvg from '../components/svg/AccountSvg';
+import HelpSvg from '../components/svg/HelpSvg';
+import PrivacySvg from '../components/svg/PrivacySvg';
 
 import { Text, View } from '../components/Themed';
+import ActivitiesContainer from '../containers/ActivitiesContainer';
+import TransactionsContainer from '../containers/TransactionsContainer';
+
+const activities = [
+  {
+    title: 'Account',
+    svg: <AccountSvg width={50} height={50} />
+  },
+  {
+    title: 'Privacy',
+    svg: <PrivacySvg width={50} height={50} />
+  },
+  {
+    title: 'Help',
+    svg: <HelpSvg width={50} height={50} />
+  },
+];
+
+const transactions = [
+  {
+    title: 'Food & Beverage',
+    subtitle: 'Five Lods',
+    value: 28.11,
+    date: new Date()
+  },
+  {
+    title: 'Food & Beverage',
+    subtitle: 'Five Lods',
+    value: 28.11,
+    date: new Date()
+  },
+  {
+    title: 'Food & Beverage',
+    subtitle: 'Five Lods',
+    value: 28.11,
+    date: new Date()
+  },
+  {
+    title: 'Food & Beverage',
+    subtitle: 'Five Lods',
+    value: 28.11,
+    date: new Date()
+  },
+  {
+    title: 'Food & Beverage',
+    subtitle: 'Five Lods',
+    value: 28.11,
+    date: new Date()
+  },
+  {
+    title: 'Food & Beverage',
+    subtitle: 'Five Lods',
+    value: 28.11,
+    date: new Date()
+  },
+  {
+    title: 'Food & Beverage',
+    subtitle: 'Five Lods',
+    value: 28.11,
+    date: new Date()
+  },
+  {
+    title: 'Food & Beverage',
+    subtitle: 'Five Lods',
+    value: 28.11,
+    date: new Date()
+  },
+]
 
 export default function TabHomeScreen() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.topContainer}>
         <Text style={styles.title}>Hi, Arthur!</Text>
         <Text style={styles.subtitle}>Here's Your Balance.</Text>
@@ -15,18 +86,25 @@ export default function TabHomeScreen() {
           <CategoryChart title="Assets" number="9615" percentage={25} color="#B5C5C3" />
         </View>
       </View>
-    </View>
+      <View style={styles.bottomContainer}>
+        <ActivitiesContainer activities={activities} />
+        <View style={styles.transactionsContainer}>
+          <TransactionsContainer transactions={transactions} />
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 141,
-    paddingLeft: 24,
-    paddingRight: 24,
+    paddingTop: 100,
     display: 'flex',
   },
   topContainer: {
+    marginBottom: 20,
+    paddingLeft: 24,
+    paddingRight: 24,
   },
   chartsContainer: {
     flex: 1,
@@ -34,11 +112,31 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 20,
   },
+  bottomContainer: {
+    display: 'flex',
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
+    minWidth: 200,
+    paddingTop: 40,
+    paddingLeft: 24,
+    paddingRight: 24,
+    paddingBottom: 120,
+  },
+  transactionsContainer: {
+    marginTop: 20,
+    backgroundColor: '#fff',
+  },
   title: {
     fontSize: 36,
+    height: 40,
   },
   subtitle: {
     marginTop: 10,
     fontSize: 36,
-  }
+    height: 40,
+  },
+  spacer: {
+    flex: 1,
+  },
 });

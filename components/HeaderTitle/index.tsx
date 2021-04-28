@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Svg, { SvgProps, Path } from "react-native-svg"
+import { headerStyles } from '../../utils/color.utils';
 
 const LogoSvg = (props: SvgProps) => {
   return (
@@ -20,15 +21,20 @@ const LogoSvg = (props: SvgProps) => {
   )
 }
 
-const HeaderTitle = () => {
+export interface HeaderTitleProps {
+  color: 'dark' | 'light';
+}
+
+const HeaderTitle = (props: HeaderTitleProps) => {
+  const colorStyle = headerStyles(props.color);
   return (
-    <View style={ styles.container }>
+    <View style={styles.container}>
       <View style={styles.logoContainer}>
-        <LogoSvg style={styles.logo} color="#fff" width={24} height={24} />
-        <Text style={ styles.title }>INVETO</Text>
+        <LogoSvg style={styles.logo} fill={colorStyle.color} width={24} height={24} />
+        <Text style={[styles.title, colorStyle]}>INVETO</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <Ionicons size={56} color="#fff" />
+        <Ionicons size={56} color={colorStyle.color} />
       </View>
     </View>
   );
@@ -38,9 +44,7 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'row',
-    flex: 1,
     alignItems: 'flex-start',
-    backgroundColor: 'transparent',
     justifyContent: 'space-between',
   },
   logoContainer: {

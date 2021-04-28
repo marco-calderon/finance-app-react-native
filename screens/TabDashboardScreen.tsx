@@ -1,32 +1,85 @@
-import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import React, { useContext, useEffect } from 'react';
+import { StyleSheet, ScrollView, View } from 'react-native';
+import PigSvg from '../components/svg/PigSvg';
+import CardsContainer from '../containers/CardsContainer';
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import InvestingTipsContainer from '../containers/InvestingTipsContainer';
+import { CardModel } from '../models/card.model';
+import { TipModel } from '../models/tip.model';
+
+const tips: TipModel[] = [
+  {
+    title: 'What is an ETF?',
+    subtitle: 'By James B., PhD',
+    buttonEnabled: true,
+    buttonText: 'Learn more',
+    svg: <PigSvg width={95} height={75} />
+  }
+];
+
+const cards: CardModel[] = [
+  {
+    lastDigits: 6175,
+    balance: 47417,
+    type: 'master-card',
+  },
+  {
+    lastDigits: 5789,
+    balance: 584466,
+    type: 'visa',
+  },
+]
 
 export default function TabDashboardScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab Dashboard</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
-    </View>
+    <ScrollView style={styles.container}>
+      <InvestingTipsContainer tips={tips} />
+      <View style={styles.cards}>
+        <CardsContainer cards={cards} />
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 35,
+    display: 'flex',
+    backgroundColor: '#fff',
+    paddingLeft: 24,
+    paddingRight: 24,
+  },
+  cards: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: 20,
+    width: '100vw',
+  },
+  bottomContainer: {
+    display: 'flex',
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
+    minWidth: 200,
+    paddingTop: 40,
+    paddingLeft: 24,
+    paddingRight: 24,
+    paddingBottom: 40,
+  },
+  transactionsContainer: {
+    marginTop: 20,
+    backgroundColor: '#fff',
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 36,
+    height: 40,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  subtitle: {
+    marginTop: 10,
+    fontSize: 36,
+    height: 40,
+  },
+  spacer: {
+    flex: 1,
   },
 });

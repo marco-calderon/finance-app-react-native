@@ -27,11 +27,14 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: .15,
     shadowRadius: 25,
+    elevation: 5,
+    minHeight: 140,
+    width: 100,
+    maxWidth: 100,
   },
   title: {
-    fontWeight: 'bold',
-    fontSize: 22,
-    color: '#fff',
+    fontSize: 15,
+    color: '#33404F',
   },
 });
 
