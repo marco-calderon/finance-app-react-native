@@ -32,8 +32,9 @@ const styles = StyleSheet.create({
   },
   cardsContainer: {
     marginTop: 15,
-    width: '100vw',
+    // width: '100%',
     marginLeft: -24,
+    marginRight: -24,
   },
 });
 

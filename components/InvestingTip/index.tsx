@@ -60,6 +60,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     marginLeft: 15,
+    flex: 1,
+    marginRight: 15,
   },
   title: {
     fontWeight: 'bold',
@@ -81,7 +83,7 @@ const styles = StyleSheet.create({
     height: 20,
     position: 'absolute',
     top: 10,
-    right: -10,
+    right: 10,
     backgroundColor: '#00DDA3',
     borderRadius: 10,
     display: 'flex',

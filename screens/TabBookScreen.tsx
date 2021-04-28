@@ -16,7 +16,7 @@ export default function TabBookScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },

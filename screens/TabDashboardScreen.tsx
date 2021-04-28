@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     marginTop: 20,
-    width: '100vw',
   },
   bottomContainer: {
     display: 'flex',
