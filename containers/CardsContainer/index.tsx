@@ -13,8 +13,8 @@ const CardsContainer = (props: CardsContainerProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>My Cards ({cards.length})</Text>
-      <ScrollView style={styles.cardsContainer} horizontal={true}>
-        {cards && cards.length > 0 && cards.map(c => <Card card={c} />)}
+      <ScrollView showsHorizontalScrollIndicator={false} style={styles.cardsContainer} horizontal={true}>
+        {cards && cards.length > 0 && cards.map(c => <Card key={c.id} card={c} />)}
       </ScrollView>
     </View>
   );

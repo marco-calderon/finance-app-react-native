@@ -13,7 +13,7 @@ const InvestingTipsContainer = (props: InvestingTipsContainerProps) => {
     <View style={styles.container}>
       <Text style={styles.title}>Investing Tips</Text>
       <View style={styles.tipsContainer}>
-        {tips && tips.length && tips.map(t => <InvestingTip tip={t} />)}
+        {tips && tips.length && tips.map(t => <InvestingTip key={t.id} tip={t} />)}
       </View>
     </View>
   );

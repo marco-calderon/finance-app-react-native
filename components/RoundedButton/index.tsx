@@ -34,10 +34,10 @@ const buttonStyles = (color: string = 'success', size: string = 'sm', type: stri
 
   switch(type) {
     case 'fill':
-      styles = {...styles, backgroundColor: selectedColor, color: '#fff' };
+      styles = {...styles, backgroundColor: selectedColor, color: '#fff', borderColor: selectedColor };
       break;
     case 'outline':
-      styles = {...styles, backgroundColor: 'transparent', borderColor: selectedColor, color: selectedColor, borderWidth: 2 };
+      styles = {...styles, backgroundColor: 'transparent', borderColor: selectedColor, color: selectedColor };
       break;
     default:
       styles = {...styles, backgroundColor: selectedColor, color: '#fff' };
@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingLeft: 25,
     paddingRight: 25,
+    borderWidth: 2,
   },
   title: {
     fontSize: 10,

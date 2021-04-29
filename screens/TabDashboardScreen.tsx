@@ -21,11 +21,13 @@ const tips: TipModel[] = [
 
 const cards: CardModel[] = [
   {
+    id: uuid(),
     lastDigits: 6175,
     balance: 47417,
     type: 'master-card',
   },
   {
+    id: uuid(),
     lastDigits: 5789,
     balance: 584466,
     type: 'visa',

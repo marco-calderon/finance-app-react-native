@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
 
 import RoundedButton from '../components/RoundedButton';
@@ -8,6 +8,8 @@ import NotificationComponent from '../components/Notification';
 import CardSvg from '../components/svg/CardSvg';
 
 export default function TabBookScreen() {
+  const [tab, setTab] = useState('assets');
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.balanceContainer}> 
@@ -22,9 +24,9 @@ export default function TabBookScreen() {
       </View>
       <View style={styles.chartsContainer}>
         <View style={styles.chartsTabsContainer}>
-          <RoundedButton style={styles.button} color="black" size="md" text="Assets" type="fill" />
-          <RoundedButton style={styles.button} color="success" size="md" text="Debt" type="outline" />
-          <RoundedButton style={styles.button} color="disabled" size="md" text="Income" type="outline" />
+          <RoundedButton style={styles.button} color="black" size="md" text="Assets" type={tab === 'assets' ? 'fill' : 'outline'} onClick={() => setTab('assets')} />
+          <RoundedButton style={styles.button} color="success" size="md" text="Debt" type={tab === 'debt' ? 'fill' : 'outline'} onClick={() => setTab('debt')} />
+          <RoundedButton style={styles.button} color="disabled" size="md" text="Income" type={tab === 'income' ? 'fill' : 'outline'} onClick={() => setTab('income')} />
         </View>
         <VictoryChart
           theme={VictoryTheme.material}

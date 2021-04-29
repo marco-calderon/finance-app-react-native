@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     paddingRight: 24,
   },
   chartsContainer: {
-    flex: 1,
+    // flex: 1,
     display: 'flex',
     flexDirection: 'row',
     marginTop: 20,
