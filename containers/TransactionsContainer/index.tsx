@@ -13,7 +13,7 @@ const TransactionsContainer = (props: TransactionContainerProps) => {
     <View style={styles.container}>
       <Text style={styles.title}>Transactions</Text>
       <View style={styles.transactionContainer}>
-        {transactions && transactions.length > 0 && transactions.map(t => <Transaction transaction={t} />)}
+        {transactions && transactions.length > 0 && transactions.map(t => <Transaction key={t.id} transaction={t} />)}
       </View>
     </View>
   );

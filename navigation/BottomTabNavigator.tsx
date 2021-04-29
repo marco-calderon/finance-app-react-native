@@ -119,7 +119,7 @@ function TabBookNavigator() {
       <TabBookStack.Screen
         name="TabBookScreen"
         component={TabBookScreen}
-        options={{ headerTitle: 'Book' }}
+        options={{ headerTitle: props => <HeaderTitle color="dark" /> }}
       />
     </TabBookStack.Navigator>
   );

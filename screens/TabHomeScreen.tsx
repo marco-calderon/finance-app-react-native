@@ -8,6 +8,7 @@ import PrivacySvg from '../components/svg/PrivacySvg';
 import { Text, View } from '../components/Themed';
 import ActivitiesContainer from '../containers/ActivitiesContainer';
 import TransactionsContainer from '../containers/TransactionsContainer';
+import { v4 as uuid } from 'uuid';
 
 const activities = [
   {
@@ -26,48 +27,56 @@ const activities = [
 
 const transactions = [
   {
+    id: uuid(),
     title: 'Food & Beverage',
     subtitle: 'Five Lods',
     value: 28.11,
     date: new Date()
   },
   {
+    id: uuid(),
     title: 'Food & Beverage',
     subtitle: 'Five Lods',
     value: 28.11,
     date: new Date()
   },
   {
+    id: uuid(),
     title: 'Food & Beverage',
     subtitle: 'Five Lods',
     value: 28.11,
     date: new Date()
   },
   {
+    id: uuid(),
     title: 'Food & Beverage',
     subtitle: 'Five Lods',
     value: 28.11,
     date: new Date()
   },
   {
+    id: uuid(),
     title: 'Food & Beverage',
     subtitle: 'Five Lods',
     value: 28.11,
     date: new Date()
   },
   {
+    id: uuid(),
     title: 'Food & Beverage',
     subtitle: 'Five Lods',
     value: 28.11,
     date: new Date()
   },
   {
+    id: uuid(),
     title: 'Food & Beverage',
     subtitle: 'Five Lods',
     value: 28.11,
     date: new Date()
   },
   {
+    id: uuid(),
     title: 'Food & Beverage',
     subtitle: 'Five Lods',
     value: 28.11,

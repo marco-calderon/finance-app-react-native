@@ -1,6 +1,7 @@
-import { ReactChild, ReactChildren, ReactNode } from "react";
+import { ReactNode } from "react";
 
 export interface TipModel {
+    id: string;
     title: string;
     subtitle?: string;
     buttonText?: string;

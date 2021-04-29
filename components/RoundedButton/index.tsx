@@ -1,21 +1,93 @@
 import React, { ReactNode } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StyleSheetProperties } from 'react-native';
 
-const buttonStyles = (color: string = 'success', size: string = 'sm') => {
+const buttonStyles = (color: string = 'success', size: string = 'sm', type: string = 'fill') => {
   let styles = {};
+  let selectedColor = '';
 
   switch(color) {
     case 'success':
-      styles = { backgroundColor: '#00DDA3' };
+      selectedColor = '#00DDA3';
+      break;
+    case 'disabled':
+      selectedColor = '#B5C5C3';
+      break;
+    case 'black':
+      selectedColor = '#000';
+      break;
     default:
-      styles =  { backgroundColor: '#00DDA3' };
+      selectedColor = '#00DDA3';
+      break;
   }
 
   switch(size) {
     case 'sm':
       styles = {...styles, height: 30, borderRadius: 15 };
+      break;
+    case 'md':
+      styles = {...styles, height: 30, borderRadius: 15 };
+      break;
     default:
       styles = {...styles, height: 30, borderRadius: 15 };
+      break;
+  }
+
+  switch(type) {
+    case 'fill':
+      styles = {...styles, backgroundColor: selectedColor, color: '#fff' };
+      break;
+    case 'outline':
+      styles = {...styles, backgroundColor: 'transparent', borderColor: selectedColor, color: selectedColor, borderWidth: 2 };
+      break;
+    default:
+      styles = {...styles, backgroundColor: selectedColor, color: '#fff' };
+      break;
+  }
+
+  return styles;
+}
+
+const textStyles = (color: string = 'success', size: string = 'sm', type: string = 'fill') => {
+  let styles = {};
+  let selectedColor = '';
+
+  switch(color) {
+    case 'success':
+      selectedColor = '#00DDA3';
+      break;
+    case 'disabled':
+      selectedColor = '#B5C5C3';
+      break;
+    case 'black':
+      selectedColor = '#000';
+      break;
+    default:
+      selectedColor = '#00DDA3';
+      break;
+  }
+
+  switch(type) {
+    case 'fill':
+      styles = { color: '#fff' };
+      break;
+    case 'outline':
+      styles = { color: selectedColor };
+      break;
+    case 'fill':
+      styles = { color: '#fff' };
+      break;
+  }
+
+  switch(size) {
+    case 'sm':
+      styles = {...styles, fontSize: 10 };
+      break;
+    case 'md':
+      styles = {...styles, fontSize: 15 };
+      break;
+    default:
+      styles = {...styles, fontSize: 15 };
+      break;
   }
 
   return styles;
@@ -24,6 +96,7 @@ const buttonStyles = (color: string = 'success', size: string = 'sm') => {
 export interface RoundedButtonProps {
   color: string;
   size: string;
+  type?: string;
   text?: string;
   children?: ReactNode[] | ReactNode | undefined;
   onClick?: Function;
@@ -31,11 +104,11 @@ export interface RoundedButtonProps {
 }
 
 const RoundedButton = (props: RoundedButtonProps) => {
-  const { color, size, text, onClick, style } = props;
+  const { color, size, text, onClick, style, type } = props;
 
   return (
-    <TouchableOpacity style={[styles.container, style, buttonStyles(color, size)]} onPress={() => onClick && onClick()}>
-      <Text style={styles.title}>
+    <TouchableOpacity style={[styles.container, style, buttonStyles(color, size, type)]} onPress={() => onClick && onClick()}>
+      <Text style={[styles.title, textStyles(color, size, type)]}>
         {text}
       </Text>
     </TouchableOpacity>
@@ -47,11 +120,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingLeft: 50,
-    paddingRight: 50,
+    paddingLeft: 25,
+    paddingRight: 25,
   },
   title: {
-    fontWeight: 'bold',
     fontSize: 10,
     color: '#fff',
   },

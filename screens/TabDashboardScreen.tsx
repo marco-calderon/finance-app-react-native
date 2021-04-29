@@ -6,9 +6,11 @@ import CardsContainer from '../containers/CardsContainer';
 import InvestingTipsContainer from '../containers/InvestingTipsContainer';
 import { CardModel } from '../models/card.model';
 import { TipModel } from '../models/tip.model';
+import { v4 as uuid } from 'uuid';
 
 const tips: TipModel[] = [
   {
+    id: uuid(),
     title: 'What is an ETF?',
     subtitle: 'By James B., PhD',
     buttonEnabled: true,
