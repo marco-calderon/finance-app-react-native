@@ -1,6 +1,6 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Settings } from 'react-native';
 import { SettingModel } from '../../models/setting.model';
 
 export interface SettingsBoxProps {
@@ -17,8 +17,8 @@ const SettingsRow = (props: SettingsRowProps) => {
 
   return (
     <TouchableOpacity style={rowStyles.container}>
-      <View style={rowStyles.iconContainer}>
-        <Ionicons name="ios-add-outline" size={16} color="#fff" />
+      <View style={[rowStyles.iconContainer, { backgroundColor: setting.backgroundColor ?? '#00DDA3' }]}>
+        {setting.svg ? setting.svg : <Ionicons name="ios-add-outline" size={16} color="#fff" />}
       </View>
       <Text style={rowStyles.title}>{setting.title}</Text>
     </TouchableOpacity>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOpacity: .10,
     shadowOffset: { width: 0, height: 0 },
-    shadowRadius: 50,
+    shadowRadius: 20,
     padding: 20,
     borderRadius: 15,
     marginBottom: 20,

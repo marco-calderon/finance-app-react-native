@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import { v4 as uuid } from 'uuid';
 import SettingsBox from '../components/SettingsBox';
 
@@ -11,18 +11,26 @@ const settings = [
       {
         id: uuid(),
         title: 'My profile',
+        svg: <Ionicons name="ios-person-outline" color="#fff" size={16} />,
+        backgroundColor: '#00DDA3',
       },
       {
-      id: uuid(),
+        id: uuid(),
         title: 'Cards',
+        svg: <Ionicons name="ios-card-outline" color="#fff" size={16} />,
+        backgroundColor: '#7D9D95',
       },
       {
         id: uuid(),
         title: 'App theme',
+        svg: <Ionicons name="ios-apps-outline" color="#fff" size={16} />,
+        backgroundColor: '#5D61CC',
       },
       {
         id: uuid(),
         title: 'Advanced',
+        svg: <Ionicons name="ios-cog-outline" color="#fff" size={16} />,
+        backgroundColor: '#E38516',
       },
     ]
   },
@@ -32,18 +40,20 @@ const settings = [
       {
         id: uuid(),
         title: 'Incomes',
+        svg: <Ionicons name="ios-arrow-up-outline" color="#fff" size={16} />,
+        backgroundColor: '#00DDA3',
       },
       {
         id: uuid(),
         title: 'Outcomes',
+        svg: <Ionicons name="ios-arrow-down-outline" color="#fff" size={16} />,
+        backgroundColor: '#F03C3C',
       },
       {
         id: uuid(),
         title: 'Recurring',
-      },
-      {
-        id: uuid(),
-        title: 'Advanced',
+        svg: <Ionicons name="ios-alarm-outline" color="#fff" size={16} />,
+        backgroundColor: '#19D9D9',
       },
     ]
   },
@@ -57,9 +67,6 @@ export default function TabAccountScreen() {
         <View style={styles.textContainer}>
           <Text style={styles.name}>John Doe</Text>
           <Text style={styles.email}>john.doe@gmail.com</Text>
-          <TouchableOpacity style={styles.editButton}>
-            <Ionicons name="ios-pencil-outline" size={20} color="#fff" />
-          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.settingsContainer}>
@@ -75,23 +82,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   headerContainer: {
-    // width: '100%',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 24,
     marginLeft: 24,
     marginRight: 24,
+    marginBottom: 24,
     backgroundColor: '#fff',
   },
   name: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 'bold',
     color: '#33404F'
   },
   email: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 16,
     color: '#B2B2B2'
   },
   avatar: {
@@ -105,16 +111,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     marginLeft: 20,
-  },
-  editButton: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    backgroundColor: '#00DDA3',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'flex-end',
   },
   settingsContainer: {
     display: 'flex',
