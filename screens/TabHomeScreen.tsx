@@ -90,7 +90,7 @@ export default function TabHomeScreen() {
 
   const handleOnActivityClick = (activity: string) => {
     if (activity === 'Account') {
-      navigation.navigate('account');
+      navigation.navigate('TabAccount');
     }
   } 
 
