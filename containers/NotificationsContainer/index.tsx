@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
-    margin: 20,
+    // margin: 20,
   },
   title: {
     fontSize: 20,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { SettingModel } from '../../models/setting.model';
 
 export interface SettingsBoxProps {
@@ -16,12 +16,12 @@ const SettingsRow = (props: SettingsRowProps) => {
   const { setting } = props;
 
   return (
-    <View style={rowStyles.container}>
+    <TouchableOpacity style={rowStyles.container}>
       <View style={rowStyles.iconContainer}>
         <Ionicons name="ios-add-outline" size={16} color="#fff" />
       </View>
       <Text style={rowStyles.title}>{setting.title}</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 

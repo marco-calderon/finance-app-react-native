@@ -36,14 +36,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     width: '100%',
     backgroundColor: '#fff',
+    padding: 20,
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { NotificationRowModel } from '../../models/notification-row.model';
 
 export interface NotificationRowProps {
@@ -11,7 +11,7 @@ const NotificationRow = (props: NotificationRowProps) => {
   const { notification } = props;
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container}>
       <View style={styles.innerContainer}>
         <View style={styles.iconContainer}>
           <View style={styles.iconCircle}></View>
@@ -22,7 +22,7 @@ const NotificationRow = (props: NotificationRowProps) => {
           <Text style={styles.date}>{notification.timestamp}</Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     height: 100,
-    width: '100%',
     paddingBottom: 20,
   },
   innerContainer: {
@@ -39,6 +38,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderBottomColor: '#CCCCCC',
     borderBottomWidth: 1,
+    width: '100%',
   },
   iconContainer: {
     display: 'flex',
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#C4C4C4',
   },
   textContainer: {
+    flex: 1,
     display: 'flex',
     flexDirection: 'column',
     marginLeft: 20,
