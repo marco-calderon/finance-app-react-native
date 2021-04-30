@@ -38,7 +38,7 @@ const transactions = [
     id: uuid(),
     title: 'Food & Beverage',
     subtitle: 'Five Lods',
-    value: 28.11,
+    value: -28.11,
     date: new Date()
   },
   {
@@ -52,7 +52,7 @@ const transactions = [
     id: uuid(),
     title: 'Food & Beverage',
     subtitle: 'Five Lods',
-    value: 28.11,
+    value: -28.11,
     date: new Date()
   },
   {
@@ -66,7 +66,7 @@ const transactions = [
     id: uuid(),
     title: 'Food & Beverage',
     subtitle: 'Five Lods',
-    value: 28.11,
+    value: -28.11,
     date: new Date()
   },
   {
@@ -80,7 +80,7 @@ const transactions = [
     id: uuid(),
     title: 'Food & Beverage',
     subtitle: 'Five Lods',
-    value: 28.11,
+    value: -28.11,
     date: new Date()
   },
 ]
@@ -116,7 +116,7 @@ export default function TabHomeScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    // paddingTop: 100,
+    paddingTop: 50,
     display: 'flex',
   },
   topContainer: {

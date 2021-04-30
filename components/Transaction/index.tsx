@@ -55,16 +55,18 @@ const Transaction = (props: TransactionProps) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.innerContainer} onPress={handleOnClick}>
-        <View style={styles.icon}>
-          {value >= 0 && <Ionicons name="ios-caret-down-outline" fill="#fff" />}
-          {value < 0 && <Ionicons name="ios-caret-up-outline" fill="#fff" />}
+        <View style={[styles.icon, value >= 0 ? styles.iconPositive : styles.iconNegative]}>
+          {value >= 0 && <Ionicons name="ios-caret-up-outline" color="#fff" size={16} />}
+          {value < 0 && <Ionicons name="ios-caret-down-outline" color="#fff" size={16} />}
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.subtitle}>{subtitle}</Text>
         </View>
         <View style={styles.spacer}></View>
-        <View style={styles.endContainer}></View>
+        <View style={styles.endContainer}>
+          <Text style={styles.value}>{value < 0 && '-'}${Math.abs(value).toLocaleString()}</Text>
+        </View>
       </TouchableOpacity>
       <Collapsible collapsed={collapsed}>
         <TransactionDetails transaction={props.transaction} />
@@ -99,6 +101,9 @@ const styles = StyleSheet.create({
   iconPositive: {
     backgroundColor: '#00DDA3'
   },
+  iconNegative: {
+    backgroundColor: '#33404F'
+  },
   textContainer: {
     display: 'flex',
     flexDirection: 'column',
@@ -117,6 +122,11 @@ const styles = StyleSheet.create({
     fontSize: 11,
     height: 15,
     color: '#33404F'
+  },
+  value: {
+    fontSize: 14,
+    color: '#33404F',
+    marginBottom: 10,
   },
   spacer: {
     flex: 1,

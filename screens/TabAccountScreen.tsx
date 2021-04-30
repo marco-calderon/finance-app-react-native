@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   headerContainer: {
+    // width: '100%',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -100,6 +101,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#C4C4C4',
   },
   textContainer: {
+    flex: 1,
     display: 'flex',
     flexDirection: 'column',
     marginLeft: 20,

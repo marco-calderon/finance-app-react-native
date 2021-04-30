@@ -11,6 +11,7 @@ export default function TabBookScreen() {
   const [assetsEnabled, setAssetsEnabled] = useState(true);
   const [debtEnabled, setDebtEnabled] = useState(false);
   const [incomeEnabled, setIncomeEnabled] = useState(false);
+  const [balance, setBalance] = useState(214417);
 
   return (
     <ScrollView style={styles.container}>
@@ -18,7 +19,7 @@ export default function TabBookScreen() {
         <View style={styles.balance}>
           <Text style={styles.title}>Total</Text>
           <Text style={styles.title}>Balance</Text>
-          <Text style={styles.title}>${214417}</Text>
+          <Text style={styles.title}>${balance.toLocaleString()}</Text>
         </View>
         <View style={styles.headerSvg}>
           <HeaderSvg width={Dimensions.get('window').width} height={Dimensions.get('window').width} preserveAspectRatio="true" />
@@ -30,35 +31,42 @@ export default function TabBookScreen() {
           <RoundedButton style={styles.button} color="success" size="md" text="Debt" type={debtEnabled ? 'fill' : 'outline'} onClick={() => setDebtEnabled(!debtEnabled)} />
           <RoundedButton style={styles.button} color="disabled" size="md" text="Income" type={incomeEnabled ? 'fill' : 'outline'} onClick={() => setIncomeEnabled(!incomeEnabled)} />
         </View>
+        {!assetsEnabled && !debtEnabled && !incomeEnabled && (
+          <View style={styles.emptyCharts}>
+            <Text style={styles.emptyChartsMessage}>Click on tabs to show the chart.</Text>
+          </View>
+        )}
         <VictoryChart
           theme={VictoryTheme.material}
           height={250}
         >
           {assetsEnabled && (
             <VictoryLine
+              domain={{ y: [0, 80] }}
               interpolation="natural"
               style={{
                 data: { stroke: "#33404F", strokeDasharray: '5, 5' },
                 parent: { border: "1px solid #ccc"}
               }}
               data={[
-                { x: 'Sun', y: 1 },
-                { x: 'Mon', y: 2 },
-                { x: 'Tue', y: 6 },
-                { x: 'Wed', y: 3 },
-                { x: 'Thu', y: 6 },
-                { x: 'Fri', y: 4 },
-                { x: 'Sat', y: 3 },
+                { x: 'Sun', y: 14 },
+                { x: 'Mon', y: 27 },
+                { x: 'Tue', y: 60 },
+                { x: 'Wed', y: 33 },
+                { x: 'Thu', y: 65.2 },
+                { x: 'Fri', y: 43 },
+                { x: 'Sat', y: 30 },
               ]}
             />
           )}
           {assetsEnabled && (
             <VictoryScatter
+              domain={{ y: [0, 80] }}
               standalone={false}
               data={[
-                { x: 'Tue', y: 6, symbol: 'circle', fill: '#33404F' },
+                { x: 'Thu', y: 65.2, symbol: 'circle', fill: '#33404F' },
               ]}
-              labels={(datum: any) => `$${datum.y}`}
+              labels={({ datum }: any) => `$${datum.y}`}
               style={{
                 data: {
                   fill: ({ datum }: any) => datum.fill,
@@ -73,29 +81,31 @@ export default function TabBookScreen() {
           )}
           {debtEnabled && (
             <VictoryLine
+              domain={{ y: [0, 80] }}
               interpolation="natural"
               style={{
                 data: { stroke: "#00DDA3", strokeDasharray: '5, 5' },
                 parent: { border: "1px solid #ccc"}
               }}
               data={[
-                { x: 'Sun', y: 2 },
-                { x: 'Mon', y: 3 },
-                { x: 'Tue', y: 5 },
-                { x: 'Wed', y: 4 },
-                { x: 'Thu', y: 7 },
-                { x: 'Fri', y: 3 },
-                { x: 'Sat', y: 2 },
+                { x: 'Sun', y: 28 },
+                { x: 'Mon', y: 36 },
+                { x: 'Tue', y: 59.99 },
+                { x: 'Wed', y: 41.5 },
+                { x: 'Thu', y: 76 },
+                { x: 'Fri', y: 33 },
+                { x: 'Sat', y: 21 },
               ]}
             />
           )}
           {debtEnabled && (
             <VictoryScatter
+              domain={{ y: [0, 80] }}
               standalone={false}
               data={[
-                { x: 'Thu', y: 7, symbol: 'circle', fill: '#00DDA3' },
+                { x: 'Thu', y: 76, symbol: 'circle', fill: '#00DDA3' },
               ]}
-              labels={(datum: any) => `$${datum.y}`}
+              labels={({ datum }: any) => `$${datum.y}`}
               style={{
                 data: {
                   fill: ({ datum }: any) => datum.fill,
@@ -110,29 +120,31 @@ export default function TabBookScreen() {
           )}
           {incomeEnabled && (
             <VictoryLine
+              domain={{ y: [0, 80] }}
               interpolation="natural"
               style={{
                 data: { stroke: "#B5C5C3", strokeDasharray: '5, 5' },
                 parent: { border: "1px solid #ccc"}
               }}
               data={[
-                { x: 'Sun', y: 7 },
-                { x: 'Mon', y: 2 },
-                { x: 'Tue', y: 6 },
-                { x: 'Wed', y: 2 },
-                { x: 'Thu', y: 3 },
-                { x: 'Fri', y: 3 },
-                { x: 'Sat', y: 5 },
+                { x: 'Sun', y: 70.1 },
+                { x: 'Mon', y: 22.6 },
+                { x: 'Tue', y: 61 },
+                { x: 'Wed', y: 29 },
+                { x: 'Thu', y: 37 },
+                { x: 'Fri', y: 36 },
+                { x: 'Sat', y: 51 },
               ]}
             />
           )}
           {incomeEnabled && (
             <VictoryScatter
+              domain={{ y: [0, 80] }}
               standalone={false}
               data={[
-                { x: 'Sun', y: 7, symbol: 'circle', fill: '#B5C5C3' },
+                { x: 'Sun', y: 70.1, symbol: 'circle', fill: '#B5C5C3' },
               ]}
-              labels={(datum: any) => `$${datum.y}`}
+              labels={({ datum }: any) => `$${datum.y}`}
               style={{
                 data: {
                   fill: ({ datum }: any) => datum.fill,
@@ -203,11 +215,29 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#fff',
   },
+  emptyCharts: {
+    position: 'absolute',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 280,
+    left: 0,
+    right: 0,
+    top: 0,
+    marginTop: 30,
+  },
+  emptyChartsMessage: {
+    fontSize: 20,
+    color: '#33404F',
+  },
   chartsContainer: {
     display: 'flex',
     backgroundColor: '#fff',
     marginTop: 30,
     alignItems: 'center',
+    position: 'relative',
+    height: 280,
+    marginBottom: 30,
   },
   chartsTabsContainer: {
     display: 'flex',
