@@ -1,32 +1,123 @@
-import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
+import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { v4 as uuid } from 'uuid';
+import SettingsBox from '../components/SettingsBox';
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+const settings = [
+  {
+    title: 'GENERAL SETTINGS',
+    settings: [
+      {
+        id: uuid(),
+        title: 'My profile',
+      },
+      {
+        id: uuid(),
+        title: 'Cards',
+      },
+      {
+        id: uuid(),
+        title: 'App theme',
+      },
+      {
+        id: uuid(),
+        title: 'Advanced',
+      },
+    ]
+  },
+  {
+    title: 'FINANCIAL',
+    settings: [
+      {
+        id: uuid(),
+        title: 'Incomes',
+      },
+      {
+        id: uuid(),
+        title: 'Outcomes',
+      },
+      {
+        id: uuid(),
+        title: 'Recurring payments',
+      },
+      {
+        id: uuid(),
+        title: 'Advanced',
+      },
+    ]
+  },
+]
 
 export default function TabAccountScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab Account</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
-    </View>
+    <ScrollView style={styles.container}>
+      <View style={styles.headerContainer}>
+        <View style={styles.avatar}></View>
+        <View style={styles.textContainer}>
+          <Text style={styles.name}>John Doe</Text>
+          <Text style={styles.email}>john.doe@gmail.com</Text>
+          <TouchableOpacity style={styles.editButton}>
+            <Ionicons name="ios-pencil-outline" size={20} color="#fff" />
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={styles.settingsContainer}>
+        {settings.map(s => <SettingsBox key={s.title} title={s.title} settings={s.settings} />)}
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: 'flex',
+    backgroundColor: '#fff',
   },
-  title: {
+  headerContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 24,
+    marginLeft: 24,
+    marginRight: 24,
+    backgroundColor: '#fff',
+  },
+  name: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: '#33404F'
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  email: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#B2B2B2'
+  },
+  avatar: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: '#C4C4C4',
+  },
+  textContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginLeft: 20,
+  },
+  editButton: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#00DDA3',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'flex-end',
+  },
+  settingsContainer: {
+    display: 'flex',
+    width: '100%',
+    backgroundColor: '#ffffff',
+    padding: 20,
   },
 });
