@@ -3,16 +3,17 @@ import { View, Text, StyleSheet } from 'react-native';
 import ActivityCard from '../../components/ActivityCard';
 
 export interface ActivitiesContainerProps {
-  activities: { title: string, svg: any }[]
+  activities: { title: string, svg: any }[],
+  onClick?: Function;
 }
 
 const ActivitiesContainer = (props: ActivitiesContainerProps) => {
-  const { activities } = props;
+  const { activities, onClick } = props;
   return (
     <View style={ styles.container }>
       <Text style={ styles.title }>Activities</Text>
       <View style={styles.activitiesContainer}>
-        {activities && activities.map(a => <ActivityCard key={a.title} title={a.title} svgComponent={a.svg} />)}
+        {activities && activities.map(a => <ActivityCard key={a.title} title={a.title} svgComponent={a.svg} onClick={(e: string) => onClick && onClick(e)} />)}
       </View>
     </View>
   );

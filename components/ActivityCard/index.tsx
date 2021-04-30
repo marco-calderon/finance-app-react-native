@@ -1,18 +1,20 @@
-import React, { ReactChild, ReactComponentElement, ReactNode } from 'react'
-import { View, Text, StyleSheet } from 'react-native';
+import React, { ReactChild } from 'react'
+import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 export interface ActivityCardProps {
   svgComponent: ReactChild;
   title: String;
+  onClick?: Function;
 }
 
 const ActivityCard = (props: ActivityCardProps) => {
-  const { title, svgComponent } = props;
+  const { title, svgComponent, onClick } = props;
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={(e: any) => onClick && onClick(title)}>
       {svgComponent}
       <Text style={styles.title}>{title}</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 

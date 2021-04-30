@@ -4,7 +4,7 @@ import { Text } from '../Themed';
 
 export interface CategoryChartProps {
   title: string;
-  number: string;
+  number: number;
   percentage: number;
   color: string;
   style?: any;
@@ -15,7 +15,7 @@ const CategoryChart = (props: CategoryChartProps) => {
   return (
     <View style={style ? {...styles.container, ...style } : styles.container}>
       <Text style={styles.title}>{title}</Text>
-      <Text style={styles.number}>{number}</Text>
+      <Text style={styles.number}>${number.toLocaleString()}</Text>
       <View style={styles.chartContainer}>
         <View style={styles.chartBackground}></View>
         <View style={{...styles.chartForeground, width: `${percentage}%`, backgroundColor: color }}></View>

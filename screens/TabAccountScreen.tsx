@@ -6,14 +6,14 @@ import SettingsBox from '../components/SettingsBox';
 
 const settings = [
   {
-    title: 'GENERAL SETTINGS',
+    title: 'General Settings',
     settings: [
       {
         id: uuid(),
         title: 'My profile',
       },
       {
-        id: uuid(),
+      id: uuid(),
         title: 'Cards',
       },
       {
@@ -27,7 +27,7 @@ const settings = [
     ]
   },
   {
-    title: 'FINANCIAL',
+    title: 'Financial',
     settings: [
       {
         id: uuid(),
@@ -39,7 +39,7 @@ const settings = [
       },
       {
         id: uuid(),
-        title: 'Recurring payments',
+        title: 'Recurring',
       },
       {
         id: uuid(),
