@@ -145,7 +145,7 @@ function TabNotificationsNavigator() {
       <TabNotificationsStack.Screen
         name="TabNotificationsScreen"
         component={TabNotificationsScreen}
-        options={{ headerTitle: 'Notifications' }}
+        options={{ headerTitle: props => <HeaderTitle color="dark" /> }}
       />
     </TabNotificationsStack.Navigator>
   );
@@ -158,7 +158,7 @@ function TabAccountNavigator() {
       <TabAccountStack.Screen
         name="TabAccountScreen"
         component={TabAccountScreen}
-        options={{ headerTitle: 'Account' }}
+        options={{ headerTitle: props => <HeaderTitle color="dark" /> }}
       />
     </TabAccountStack.Navigator>
   );

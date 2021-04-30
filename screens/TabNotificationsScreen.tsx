@@ -3,22 +3,39 @@ import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+import NotificationsContainer from '../containers/NotificationsContainer';
+import { v4 as uuid } from 'uuid';
+import { ScrollView } from 'react-native-gesture-handler';
+
+const notifications = [
+  { id: uuid(), title: 'Your account has been upgraded', subtitle: 'Verify your email for details.', timestamp: 1 },
+  { id: uuid(), title: 'Your account has been upgraded', subtitle: 'Verify your email for details.', timestamp: 1 },
+  { id: uuid(), title: 'Your account has been upgraded', subtitle: 'Verify your email for details.', timestamp: 1 },
+  { id: uuid(), title: 'Your account has been upgraded', subtitle: 'Verify your email for details.', timestamp: 1 },
+  { id: uuid(), title: 'Your account has been upgraded', subtitle: 'Verify your email for details.', timestamp: 1 },
+  { id: uuid(), title: 'Your account has been upgraded', subtitle: 'Verify your email for details.', timestamp: 1 },
+  { id: uuid(), title: 'Your account has been upgraded', subtitle: 'Verify your email for details.', timestamp: 1 },
+  { id: uuid(), title: 'Your account has been upgraded', subtitle: 'Verify your email for details.', timestamp: 1 },
+  { id: uuid(), title: 'Your account has been upgraded', subtitle: 'Verify your email for details.', timestamp: 1 },
+  { id: uuid(), title: 'Your account has been upgraded', subtitle: 'Verify your email for details.', timestamp: 1 },
+  { id: uuid(), title: 'Your account has been upgraded', subtitle: 'Verify your email for details.', timestamp: 1 },
+  { id: uuid(), title: 'Your account has been upgraded', subtitle: 'Verify your email for details.', timestamp: 1 },
+  { id: uuid(), title: 'Your account has been upgraded', subtitle: 'Verify your email for details.', timestamp: 1 },
+]
 
 export default function TabNotificationsScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab Notifications</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
-    </View>
+    <ScrollView style={styles.container}>
+      <NotificationsContainer notifications={notifications} />
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: 'flex',
+    width: '100%',
+    backgroundColor: '#fff',
   },
   title: {
     fontSize: 20,
