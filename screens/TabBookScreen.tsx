@@ -8,7 +8,9 @@ import NotificationComponent from '../components/Notification';
 import CardSvg from '../components/svg/CardSvg';
 
 export default function TabBookScreen() {
-  const [tab, setTab] = useState('assets');
+  const [assetsEnabled, setAssetsEnabled] = useState(true);
+  const [debtEnabled, setDebtEnabled] = useState(false);
+  const [incomeEnabled, setIncomeEnabled] = useState(false);
 
   return (
     <ScrollView style={styles.container}>
@@ -24,64 +26,125 @@ export default function TabBookScreen() {
       </View>
       <View style={styles.chartsContainer}>
         <View style={styles.chartsTabsContainer}>
-          <RoundedButton style={styles.button} color="black" size="md" text="Assets" type={tab === 'assets' ? 'fill' : 'outline'} onClick={() => setTab('assets')} />
-          <RoundedButton style={styles.button} color="success" size="md" text="Debt" type={tab === 'debt' ? 'fill' : 'outline'} onClick={() => setTab('debt')} />
-          <RoundedButton style={styles.button} color="disabled" size="md" text="Income" type={tab === 'income' ? 'fill' : 'outline'} onClick={() => setTab('income')} />
+          <RoundedButton style={styles.button} color="black" size="md" text="Assets" type={assetsEnabled ? 'fill' : 'outline'} onClick={() => setAssetsEnabled(!assetsEnabled)} />
+          <RoundedButton style={styles.button} color="success" size="md" text="Debt" type={debtEnabled ? 'fill' : 'outline'} onClick={() => setDebtEnabled(!debtEnabled)} />
+          <RoundedButton style={styles.button} color="disabled" size="md" text="Income" type={incomeEnabled ? 'fill' : 'outline'} onClick={() => setIncomeEnabled(!incomeEnabled)} />
         </View>
         <VictoryChart
           theme={VictoryTheme.material}
           height={250}
         >
-          <VictoryLine
-            interpolation="natural"
-            style={{
-              data: { stroke: "#00DDA3", strokeDasharray: '5, 5' },
-              parent: { border: "1px solid #ccc"}
-            }}
-            data={[
-              { x: 'Sun', y: 2 },
-              { x: 'Mon', y: 3 },
-              { x: 'Tue', y: 5 },
-              { x: 'Wed', y: 4 },
-              { x: 'Thu', y: 7 },
-              { x: 'Fri', y: 3 },
-              { x: 'Sat', y: 2 },
-            ]}
-          />
-          <VictoryLine
-            interpolation="natural"
-            style={{
-              data: { stroke: "#33404F", strokeDasharray: '5, 5' },
-              parent: { border: "1px solid #ccc"}
-            }}
-            data={[
-              { x: 'Sun', y: 1 },
-              { x: 'Mon', y: 2 },
-              { x: 'Tue', y: 6 },
-              { x: 'Wed', y: 3 },
-              { x: 'Thu', y: 6 },
-              { x: 'Fri', y: 4 },
-              { x: 'Sat', y: 3 },
-            ]}
-          />
-          <VictoryScatter
-            standalone={false}
-            data={[
-              { x: 'Tue', y: 6, symbol: 'circle', fill: '#33404F' },
-              { x: 'Thu', y: 7, symbol: 'circle', fill: '#00DDA3' },
-            ]}
-            labels={(datum: any) => `$${datum.y}`}
-            style={{
-              data: {
-                fill: ({ datum }: any) => datum.fill,
-                strokeWidth: 3,
-              },
-              labels: {
-                fill: ({ datum }: any) => datum.fill,
-              },
-            }}
-            symbol={(d: any) => 'circle'}
-          />
+          {assetsEnabled && (
+            <VictoryLine
+              interpolation="natural"
+              style={{
+                data: { stroke: "#33404F", strokeDasharray: '5, 5' },
+                parent: { border: "1px solid #ccc"}
+              }}
+              data={[
+                { x: 'Sun', y: 1 },
+                { x: 'Mon', y: 2 },
+                { x: 'Tue', y: 6 },
+                { x: 'Wed', y: 3 },
+                { x: 'Thu', y: 6 },
+                { x: 'Fri', y: 4 },
+                { x: 'Sat', y: 3 },
+              ]}
+            />
+          )}
+          {assetsEnabled && (
+            <VictoryScatter
+              standalone={false}
+              data={[
+                { x: 'Tue', y: 6, symbol: 'circle', fill: '#33404F' },
+              ]}
+              labels={(datum: any) => `$${datum.y}`}
+              style={{
+                data: {
+                  fill: ({ datum }: any) => datum.fill,
+                  strokeWidth: 3,
+                },
+                labels: {
+                  fill: ({ datum }: any) => datum.fill,
+                },
+              }}
+              symbol={(d: any) => 'circle'}
+            />
+          )}
+          {debtEnabled && (
+            <VictoryLine
+              interpolation="natural"
+              style={{
+                data: { stroke: "#00DDA3", strokeDasharray: '5, 5' },
+                parent: { border: "1px solid #ccc"}
+              }}
+              data={[
+                { x: 'Sun', y: 2 },
+                { x: 'Mon', y: 3 },
+                { x: 'Tue', y: 5 },
+                { x: 'Wed', y: 4 },
+                { x: 'Thu', y: 7 },
+                { x: 'Fri', y: 3 },
+                { x: 'Sat', y: 2 },
+              ]}
+            />
+          )}
+          {debtEnabled && (
+            <VictoryScatter
+              standalone={false}
+              data={[
+                { x: 'Thu', y: 7, symbol: 'circle', fill: '#00DDA3' },
+              ]}
+              labels={(datum: any) => `$${datum.y}`}
+              style={{
+                data: {
+                  fill: ({ datum }: any) => datum.fill,
+                  strokeWidth: 3,
+                },
+                labels: {
+                  fill: ({ datum }: any) => datum.fill,
+                },
+              }}
+              symbol={(d: any) => 'circle'}
+            />
+          )}
+          {incomeEnabled && (
+            <VictoryLine
+              interpolation="natural"
+              style={{
+                data: { stroke: "#B5C5C3", strokeDasharray: '5, 5' },
+                parent: { border: "1px solid #ccc"}
+              }}
+              data={[
+                { x: 'Sun', y: 7 },
+                { x: 'Mon', y: 2 },
+                { x: 'Tue', y: 6 },
+                { x: 'Wed', y: 2 },
+                { x: 'Thu', y: 3 },
+                { x: 'Fri', y: 3 },
+                { x: 'Sat', y: 5 },
+              ]}
+            />
+          )}
+          {incomeEnabled && (
+            <VictoryScatter
+              standalone={false}
+              data={[
+                { x: 'Sun', y: 7, symbol: 'circle', fill: '#B5C5C3' },
+              ]}
+              labels={(datum: any) => `$${datum.y}`}
+              style={{
+                data: {
+                  fill: ({ datum }: any) => datum.fill,
+                  strokeWidth: 3,
+                },
+                labels: {
+                  fill: ({ datum }: any) => datum.fill,
+                },
+              }}
+              symbol={(d: any) => 'circle'}
+            />
+          )}
           <VictoryAxis
             theme={VictoryTheme.material}
             standalone={false}
@@ -91,7 +154,7 @@ export default function TabBookScreen() {
               grid: { stroke: 'none' },
               tickLabels: { fontSize: 15, fontWeight: 'bold' },
             }}
-            tickFormat={(t: string) => `${t.charAt(0)}`}
+            tickFormat={(t: string) => `${t !== null && t !== undefined && t.charAt ? t.charAt(0) : ''}`}
           />
         </VictoryChart>
       </View>
