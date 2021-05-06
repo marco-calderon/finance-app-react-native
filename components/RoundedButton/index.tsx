@@ -16,7 +16,7 @@ const buttonStyles = (color: string = 'success', size: string = 'sm', type: stri
       selectedColor = '#000';
       break;
     default:
-      selectedColor = '#00DDA3';
+      selectedColor = color;
       break;
   }
 
@@ -62,7 +62,7 @@ const textStyles = (color: string = 'success', size: string = 'sm', type: string
       selectedColor = '#000';
       break;
     default:
-      selectedColor = '#00DDA3';
+      selectedColor = color;
       break;
   }
 

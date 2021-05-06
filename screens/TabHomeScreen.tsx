@@ -10,6 +10,9 @@ import ActivitiesContainer from '../containers/ActivitiesContainer';
 import TransactionsContainer from '../containers/TransactionsContainer';
 import { v4 as uuid } from 'uuid';
 import { useNavigation } from '@react-navigation/core';
+import Modal, { ModalContent, SlideAnimation } from 'react-native-modals';
+import { useState } from 'react';
+import AddTransactionModal from '../containers/AddTransactionModal';
 
 const activities = [
   {
@@ -87,6 +90,7 @@ const transactions = [
 
 export default function TabHomeScreen() {
   const navigation = useNavigation();
+  const [showModal, setShowModal] = useState(false);
 
   const handleOnActivityClick = (activity: string) => {
     if (activity === 'Account') {
@@ -95,22 +99,39 @@ export default function TabHomeScreen() {
   } 
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.topContainer}>
-        <Text style={styles.title}>Hi, Arthur!</Text>
-        <Text style={styles.subtitle}>Here's Your Balance.</Text>
-        <View style={styles.chartsContainer}>
-          <CategoryChart title="Savings" number={15615} percentage={80} color="#00DDA3" style={{ marginRight: 50 }} />
-          <CategoryChart title="Assets" number={9615} percentage={25} color="#B5C5C3" />
+    <View>
+      <ScrollView style={styles.container}>
+        <View style={styles.topContainer}>
+          <Text style={styles.title}>Hi, Arthur!</Text>
+          <Text style={styles.subtitle}>Here's Your Balance.</Text>
+          <View style={styles.chartsContainer}>
+            <CategoryChart title="Savings" number={15615} percentage={80} color="#00DDA3" style={{ marginRight: 50 }} />
+            <CategoryChart title="Assets" number={9615} percentage={25} color="#B5C5C3" />
+          </View>
         </View>
-      </View>
-      <View style={styles.bottomContainer}>
-        <ActivitiesContainer activities={activities} onClick={handleOnActivityClick} />
-        <View style={styles.transactionsContainer}>
-          <TransactionsContainer transactions={transactions} />
+        <View style={styles.bottomContainer}>
+          <ActivitiesContainer activities={activities} onClick={handleOnActivityClick} />
+          <View style={styles.transactionsContainer}>
+            <TransactionsContainer transactions={transactions} onAddClick={() => setShowModal(true)} />
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+      <Modal visible={showModal}
+        width={1}
+        height={0.8}
+        modalAnimation={new SlideAnimation({ slideFrom: 'bottom' })}
+        swipeDirection={['up', 'down']}
+        onSwipeOut={() => setShowModal(false)}
+        onTouchOutside={() => setShowModal(false)}
+        style={{
+          justifyContent: 'flex-end',
+        }}
+      >
+        <ModalContent style={{ width: '100%' }}>
+          <AddTransactionModal />
+        </ModalContent>
+      </Modal>
+    </View>
   );
 }
 

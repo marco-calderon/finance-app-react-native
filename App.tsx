@@ -7,6 +7,8 @@ import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 
+import { ModalPortal } from 'react-native-modals';
+
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
@@ -20,6 +22,7 @@ export default function App() {
         <StatusBarContext.Provider value={[statusBarStyle, setStatusBarStyle]}>
           <Navigation colorScheme={colorScheme} />
           <StatusBar style={statusBarStyle} />
+          <ModalPortal />
         </StatusBarContext.Provider>
       </SafeAreaProvider>
     );
